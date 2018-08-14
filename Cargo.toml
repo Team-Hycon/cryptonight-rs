@@ -1,0 +1,18 @@
+[package]
+name = "rust-cryptonight"
+version = "0.1.0"
+authors = ["Hycon team"]
+homepage = "https://github.com/arigatodl/rust-cryptonight/"
+repository = "https://github.com/arigatodl/rust-cryptonight/"
+keywords = [ "Crypto" ]
+readme = "README.md"
+build = "build.rs"
+
+[lib]
+name = "cryptonight"
+
+[dependencies]
+libc = "0.2.31"
+
+[build-dependencies]
+cc = "1.0.2"
