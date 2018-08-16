@@ -19,6 +19,7 @@ fn main() {
         .file("src/vendor/hash.c")
         .file("src/vendor/jh.c")
         .file("src/vendor/keccak.c")
+        .file("src/vendor/oaes_lib.c")
         .file("src/vendor/skein.c")
         .file("src/vendor/slow-hash.c")
         .flag("-maes")
