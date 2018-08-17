@@ -17,15 +17,9 @@ addons:
     packages:
     - libboost-dev
 script:
-  - echo 'Running tests' && echo -en 'travis_fold:start:tests'
-  - cargo test --all
-  - echo -en 'travis_fold:end:tests'
-  - echo 'Building in release mode' && echo -en 'travis_fold:start:build.release'
+  - cargo test --verbose --all
   - cargo build --release
-  - echo -en 'travis_fold:end:build.release'
-  - echo 'Running bench' && echo -en 'travis_fold:start:bench'
-  - cargo bench --all
-  - echo -en 'travis_fold:end:bench'
+  - cargo bench --verbose --all
 env:
   global:
   - RUST_BACKTRACE=1
