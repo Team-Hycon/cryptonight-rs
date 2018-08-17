@@ -18,7 +18,7 @@ cryptonight-rs = "^0.1"
 and the following to your crate root:
 
 ```rust
-extern crate cryptonight-rs as cryptonight;
+extern crate cryptonight;
 ```
 
 ## Issues & Pull Requests
@@ -30,4 +30,4 @@ If you'd like to help us out, the [Pull Request](https://github.com/arigatodl/cr
 
 ## Credits
 
-Kudos to [Monero team](https://getmonero.org/community/team/) - C code from https://github.com/monero-project/monero 
+Kudos to [Monero team](https://getmonero.org/community/team/) - C code from https://github.com/monero-project/monero
