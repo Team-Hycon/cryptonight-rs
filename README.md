@@ -4,6 +4,8 @@
 
 Cryptonight hash function in Rust language (uses compiled C code).
 
+**This code is not stable yet. It is not recommended to use it in production.**
+
 ## Usage
 
 To use Rust-Cryptonight, add the following to your Cargo.toml:
