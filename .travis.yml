@@ -1,26 +1,17 @@
-sudo: required
-dist: trusty
 language: rust
-
-matrix:
-  fast_finish: false
-  include:
-  - rust: stable
+rust: 
+  - stable
 
 cache:
-  apt: true
-  directories:
-  - $TRAVIS_BUILD_DIR/target
-  - $HOME/.cargo
+  cargo
 
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
-    - llvm-toolchain-trusty-4.0
     packages:
     - libboost-dev
-    - clang-4.0
+    - clang
 
 script:
   - cargo test --all
@@ -30,4 +21,4 @@ script:
 env:
   global:
   - RUST_BACKTRACE=1
-  - CC="clang-4.0"
+  - CC="clang"
