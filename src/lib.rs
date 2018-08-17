@@ -1,4 +1,5 @@
 extern crate libc;
+extern crate rustc_serialize as serialize;
 
 use libc::{c_char, c_void};
 
@@ -7,29 +8,116 @@ extern "C" {
     fn cn_slow_hash(data: *const c_void, length: usize, hash: *const c_char, variant: i32, pre_hashed: i32) -> c_void;
 }
 
-pub fn hash(data: &[u8], size: usize) -> Vec<i8> {
-    let hash_data = [0i8; 32];
-    let mut hash_vec = vec![0; 32];
-    let data_ptr: *const c_void = &data as *const _ as *const c_void;
+pub fn hash(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
+    let hash: Vec<i8> = vec![0i8; 32];
+    let data_ptr: *const c_void = data.as_ptr() as *const c_void;
+    let hash_ptr: *const c_char = hash.as_ptr() as *const c_char;
     unsafe {
-        cn_slow_hash(data_ptr, size, hash_data.as_ptr(), 1 as i32, 0 as i32);
+        cn_slow_hash(data_ptr, size, hash_ptr, variant, 0);
+        std::mem::transmute::<Vec<i8>, Vec<u8>>(hash)
     }
-    for i in 0..hash_data.len() {
-        hash_vec.push(hash_data[i])
-    }
-    //let hash_vec: Vec<u8> = transmute(Slice { data: hash_data, len: 256 });
-    hash_vec
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serialize::hex::FromHex;
+
+    struct Test {
+        input: Vec<u8>,
+        output: Vec<u8>,
+        variant: i32,
+    }
+
+    fn test_hash(tests: &[Test]) {
+        for t in tests {
+            let out = hash(&t.input[..], t.input.len(), t.variant);
+            assert_eq!(out, t.output);
+        }
+    }
 
     #[test]
-    fn test_hash() {
-        let test_data = "This is a test which as at least 43 bytes ...";
-        //let expected_hash_value = []
-        let hash_value = hash(test_data.as_bytes(), test_data.len());
-        //assert_eq!(hash_value., expected_hash_value);
+    fn run_test() {
+        let tests = vec![
+            // from https://github.com/ExcitableAardvark/node-cryptonight/blob/master/index.test.js
+            Test {
+                input: "This is a test which as at least 43 bytes ...".as_bytes().to_vec(),
+                output: "bf1b87e049bfe1c668c44f2dc1bb689a\
+                         bcc729a704fc8088917cfbca202fc3cb".from_hex().unwrap(),
+                variant: 1
+            },
+
+            // from https://github.com/monero-project/monero/blob/0683f3190d09001fe3690613f796a0de0c4cee4c/tests/hash/tests-slow-1.txt @17th of August, 2018
+            Test {
+                input: "38274c97c45a172cfc97679870422e3a1ab0784960c\
+                        60514d816271415c306ee3a3ed1a77e31f6a885c3cb".from_hex().unwrap(),
+                output: "ed082e49dbd5bbe34a3726a0d1dad981\
+                         146062b39d36d62c71eb1ed8ab49459b".from_hex().unwrap(),
+                variant: 1
+            },
+            Test {
+                input: "37a636d7dafdf259b7287eddca2f5809\
+                        9e98619d2f99bdb8969d7b14498102cc\
+                        065201c8be90bd777323f449848b215d\
+                        2977c92c4c1c2da36ab46b2e389689ed\
+                        97c18fec08cd3b03235c5e4c62a37ad8\
+                        8c7b67932495a71090e85dd4020a9300".from_hex().unwrap(),
+                output: "613e638505ba1fd05f428d5c9f8e08f8\
+                         165614342dac419adc6a47dce257eb3e".from_hex().unwrap(),
+                variant: 1
+            },
+            Test {
+                input: "8519e039172b0d70e5ca7b3383d6b316\
+                        7315a422747b73f019cf9528f0fde341\
+                        fd0f2a63030ba6450525cf6de3183766\
+                        9af6f1df8131faf50aaab8d3a7405589".from_hex().unwrap(),
+                output: "5bb40c5880cef2f739bdb6aaaf16161e\
+                         aae55530e7b10d7ea996b751a299e949".from_hex().unwrap(),
+                variant: 1
+            },
+            Test {
+                input: "00000000000000000000000000000000000000\
+                        00000000000000000000000000000000000000\
+                        00000000000000000000000000000000000000\
+                        00000000000000000000000000000000000000".from_hex().unwrap(),
+                output: "80563c40ed46575a9e44820d93ee095e\
+                         2851aa22483fd67837118c6cd951ba61".from_hex().unwrap(),
+                variant: 1
+            },
+            Test {
+                input: "0000000000000000000000000000000000000000000\
+                        0000000000000000000000000000000000000000000".from_hex().unwrap(),
+                output: "b5a7f63abb94d07d1a6445c36c07c7e8\
+                         327fe61b1647e391b4c7edae5de57a3d".from_hex().unwrap(),
+                variant: 1
+            },
+
+            // from https://github.com/monero-project/monero/blob/b780cf4db1f9dfc49e7f16afc47892a5b40fe68a/tests/hash/tests-slow.txt @17th of August, 2018
+            Test {
+                input: "6465206f6d6e69627573206475626974616e64756d".from_hex().unwrap(),
+                output: "2f8e3df40bd11f9ac90c743ca8e32bb3\
+                         91da4fb98612aa3b6cdc639ee00b31f5".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "6162756e64616e732063617574656c61206e6f6e206e6f636574".from_hex().unwrap(),
+                output: "722fa8ccd594d40e4a41f3822734304c\
+                         8d5eff7e1b528408e2229da38ba553c4".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "63617665617420656d70746f72".from_hex().unwrap(),
+                output: "bbec2cacf69866a8e740380fe7b818fc\
+                         78f8571221742d729d9d02d7f8989b87".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "6578206e6968696c6f206e6968696c20666974".from_hex().unwrap(),
+                output: "b1257de4efc5ce28c6b40ceb1c6c8f81\
+                         2a64634eb3e81c5220bee9b2b76a6f05".from_hex().unwrap(),
+                variant: 0
+            },
+        ];
+        test_hash(&tests[..]);
     }
 }
