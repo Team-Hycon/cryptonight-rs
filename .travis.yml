@@ -15,6 +15,7 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
+    - libboost-dev
     - libcurl4-openssl-dev
     - libelf-dev
     - libdw-dev
