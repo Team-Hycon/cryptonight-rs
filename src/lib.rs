@@ -117,6 +117,45 @@ mod tests {
                          2a64634eb3e81c5220bee9b2b76a6f05".from_hex().unwrap(),
                 variant: 0
             },
+
+            // from https://github.com/MoneroOcean/node-cryptonight-hashing/blob/af648e0c699af40a6a2415d91dc71deafaa55a90/tests/cryptonight.txt @17th of August, 2018
+            Test {
+                input: "Lorem ipsum dolor sit amet, consectetur ad\
+                        ipiscing elit. Vivamus pellentesque metus.".as_bytes().to_vec(),
+                output: "0bbe54bd26caa92a1d436eec71cbef02\
+                         560062fa689fe14d7efcf42566b411cf".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "ex nihilo nihil fit".as_bytes().to_vec(),
+                output: "b1257de4efc5ce28c6b40ceb1c6c8f81\
+                         2a64634eb3e81c5220bee9b2b76a6f05".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "caveat emptor".as_bytes().to_vec(),
+                output: "bbec2cacf69866a8e740380fe7b818fc\
+                         78f8571221742d729d9d02d7f8989b87".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "abundans cautela non nocet".as_bytes().to_vec(),
+                output: "722fa8ccd594d40e4a41f3822734304c\
+                         8d5eff7e1b528408e2229da38ba553c4".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "de omnibus dubitandum".as_bytes().to_vec(),
+                output: "2f8e3df40bd11f9ac90c743ca8e32bb3\
+                         91da4fb98612aa3b6cdc639ee00b31f5".from_hex().unwrap(),
+                variant: 0
+            },
+            Test {
+                input: "This is a test".as_bytes().to_vec(),
+                output: "a084f01d1437a09c6985401b60d43554\
+                         ae105802c5f5d8a9b3253649c0be6605".from_hex().unwrap(),
+                variant: 0
+            },
         ];
         test_hash(&tests[..]);
     }
