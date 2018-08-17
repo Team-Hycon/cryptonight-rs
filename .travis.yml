@@ -1,0 +1,38 @@
+sudo: required
+dist: trusty
+language: rust
+matrix:
+  fast_finish: false
+  include:
+  - rust: stable
+cache:
+  apt: true
+  directories:
+  - $TRAVIS_BUILD_DIR/target
+  - $HOME/.cargo
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - libcurl4-openssl-dev
+    - libelf-dev
+    - libdw-dev
+    - gcc-4.8
+    - g++-4.8
+    - oracle-java8-set-default
+script:
+  - echo 'Running tests' && echo -en 'travis_fold:start:tests'
+  - cargo test --all
+  - echo -en 'travis_fold:end:tests'
+  - echo 'Building in release mode' && echo -en 'travis_fold:start:build.release'
+  - cargo build --release
+  - echo -en 'travis_fold:end:build.release'
+  - echo 'Running bench' && echo -en 'travis_fold:start:bench'
+  - cargo bench --all
+  - echo -en 'travis_fold:end:bench'
+env:
+  global:
+  - CXX="g++-4.8"
+  - CC="gcc-4.8"
+  - RUST_BACKTRACE=1
