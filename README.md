@@ -1,30 +1,30 @@
-# Rust-Cryptonight
+# Cryptonight-rs
 
-[![Build Status](https://travis-ci.org/arigatodl/rust-cryptonight.svg?branch=master)](https://travis-ci.org/arigatodl/rust-cryptonight)
+[![Build Status](https://travis-ci.org/arigatodl/rust-cryptonight.svg?branch=master)](https://travis-ci.org/arigatodl/cryptonight-rs)
 
-Rust-Cryptonight is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
+Cryptonight-rs is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
 
 **This code is not stable yet. It is not recommended to use it in production.**
 
 ## Usage
 
-To use Rust-Cryptonight, add the following to your Cargo.toml:
+To use Cryptonight-rs, add the following to your Cargo.toml:
 
 ```toml
 [dependencies]
-rust-cryptonight = "^0.1"
+cryptonight-rs = "^0.1"
 ```
 
 and the following to your crate root:
 
 ```rust
-extern crate cryptonight;
+extern crate cryptonight-rs as cryptonight;
 ```
 
 ## Issues & Pull Requests
 
-If you have an issue, feel free to add it to the [Issues](https://github.com/arigatodl/rust-cryptonight/issues) tab.
-If you'd like to help us out, the [Pull Request](https://github.com/arigatodl/rust-cryptonight/pulls) tab is a great place to start.
+If you have an issue, feel free to add it to the [Issues](https://github.com/arigatodl/cryptonight-rs/issues) tab.
+If you'd like to help us out, the [Pull Request](https://github.com/arigatodl/cryptonight-rs/pulls) tab is a great place to start.
 
 **If you have found a security bug, please contact us at [security@glosfer.com](security@glosfer.com).**
 
