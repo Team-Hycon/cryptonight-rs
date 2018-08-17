@@ -16,12 +16,6 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - libboost-dev
-    - libcurl4-openssl-dev
-    - libelf-dev
-    - libdw-dev
-    - gcc-4.8
-    - g++-4.8
-    - oracle-java8-set-default
 script:
   - echo 'Running tests' && echo -en 'travis_fold:start:tests'
   - cargo test --all
@@ -34,6 +28,4 @@ script:
   - echo -en 'travis_fold:end:bench'
 env:
   global:
-  - CXX="g++-4.8"
-  - CC="gcc-4.8"
   - RUST_BACKTRACE=1
