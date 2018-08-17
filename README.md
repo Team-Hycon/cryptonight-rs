@@ -18,3 +18,7 @@ and the following to your crate root:
 ```rust
 extern crate cryptonight;
 ```
+
+## Credits
+
+Kudos to [Monero team](https://getmonero.org/community/team/) - C code from https://github.com/monero-project/monero 
