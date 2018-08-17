@@ -21,6 +21,13 @@ and the following to your crate root:
 extern crate cryptonight;
 ```
 
+## Issues & Pull Requests
+
+If you have an issue, feel free to add it to the [Issues](https://github.com/arigatodl/rust-cryptonight/issues) tab.
+If you'd like to help us out, the [Pull Request](https://github.com/arigatodl/rust-cryptonight/pulls) tab is a great place to start.
+
+**If you have found a security bug, please contact us at [security@glosfer.com](security@glosfer.com).**
+
 ## Credits
 
 Kudos to [Monero team](https://getmonero.org/community/team/) - C code from https://github.com/monero-project/monero 
