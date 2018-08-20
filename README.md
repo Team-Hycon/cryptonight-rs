@@ -19,6 +19,18 @@ and the following to your crate root:
 
 ```rust
 extern crate cryptonight;
+use cryptonight::hash;
+```
+
+## Test && Benchmark
+Run test
+```rust
+cargo test
+```
+
+Run benchmark
+```rust
+cargo bench
 ```
 
 ## Issues & Pull Requests
