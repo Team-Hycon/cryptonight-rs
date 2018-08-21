@@ -8,7 +8,7 @@ repository = "https://github.com/arigatodl/cryptonight-rs/"
 keywords = [ "Crypto", "Cryptonight" ]
 readme = "README.md"
 build = "build.rs"
-license = "MIT License"
+license = "MIT"
 
 [lib]
 name = "cryptonight"
