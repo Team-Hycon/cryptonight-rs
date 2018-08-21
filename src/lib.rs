@@ -57,6 +57,10 @@ extern "C" {
 /// };
 /// let out = hash(&test.input[..], test.input.len(), test.variant);
 /// assert_eq!(out, test.output);
+/// ```
+/// 
+/// # reference
+/// [https://cryptonote.org/cns/cns008.txt](https://cryptonote.org/cns/cns008.txt)
 pub fn hash(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
     let hash: Vec<i8> = vec![0i8; 32];
     let data_ptr: *const c_void = data.as_ptr() as *const c_void;
