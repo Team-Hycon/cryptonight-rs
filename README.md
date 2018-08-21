@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/arigatodl/cryptonight-rs.svg?branch=master)](https://travis-ci.org/arigatodl/cryptonight-rs)
 [![crates.io](https://img.shields.io/badge/crates.io-cryptonight--rs-brightgreen.svg)](https://crates.io/crates/cryptonight-rs)
-[![crates doc](https://docs.rs/cryptonight-rs/badge.svg)](https://docs.rs/cryptonight-rs/badge.svg)
+[![crates doc](https://docs.rs/cryptonight-rs/badge.svg)](https://docs.rs/crate/cryptonight-rs/0.1.0)
 
 Cryptonight-rs is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
 
