@@ -15,7 +15,7 @@
 //! use cryptonight::hash;
 //! ```
 //! 
-//! # Test && Benchmark
+//! # Test & Benchmark
 //! Clone the repository into local
 //! - cd repo
 //! - cargo test

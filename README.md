@@ -1,6 +1,8 @@
 # Cryptonight-rs
 
 [![Build Status](https://travis-ci.org/arigatodl/cryptonight-rs.svg?branch=master)](https://travis-ci.org/arigatodl/cryptonight-rs)
+[![crates.io](https://img.shields.io/badge/crates.io-cryptonight--rs-brightgreen.svg)](https://crates.io/crates/cryptonight-rs)
+[![crates doc](https://docs.rs/cryptonight-rs/badge.svg)](https://docs.rs/cryptonight-rs/badge.svg)
 
 Cryptonight-rs is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
 
@@ -22,7 +24,7 @@ extern crate cryptonight;
 use cryptonight::hash;
 ```
 
-## Test && Benchmark
+## Test & Benchmark
 Clone the repository into local
 ```rust
 cd repo
