@@ -16,14 +16,10 @@
 //! ```
 //! 
 //! # Test && Benchmark
-//! Run test
-//! ```rust
-//! cargo test
-//! ```
-//! Run benchmark
-//! ```rust
-//! cargo bench
-//! ```
+//! Clone the repository into local
+//! - cd repo
+//! - cargo test
+//! - cargo bench
 
 extern crate libc;
 extern crate rustc_serialize as serialize;
@@ -43,6 +39,10 @@ extern "C" {
 /// # Example
 /// 
 /// ```rust
+/// # extern crate rustc_serialize as serialize;
+/// # extern crate cryptonight;
+/// # use cryptonight::hash;
+/// # use serialize::hex::FromHex;
 /// struct Test {
 ///     input: Vec<u8>,
 ///     output: Vec<u8>,
@@ -55,8 +55,8 @@ extern "C" {
 /// ab49459b".from_hex().unwrap(),
 /// variant:1
 /// };
-/// let out = hash(&test.input[..], test.input.len(), test.variant)
-/// assert_eq!(out, test.output)
+/// let out = hash(&test.input[..], test.input.len(), test.variant);
+/// assert_eq!(out, test.output);
 pub fn hash(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
     let hash: Vec<i8> = vec![0i8; 32];
     let data_ptr: *const c_void = data.as_ptr() as *const c_void;

@@ -23,6 +23,10 @@ use cryptonight::hash;
 ```
 
 ## Test && Benchmark
+Clone the repository into local
+```rust
+cd repo
+```
 Run test
 ```rust
 cargo test
