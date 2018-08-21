@@ -1,6 +1,6 @@
 # Cryptonight-rs
 
-[![Build Status](https://travis-ci.org/arigatodl/rust-cryptonight.svg?branch=master)](https://travis-ci.org/arigatodl/cryptonight-rs)
+[![Build Status](https://travis-ci.org/arigatodl/cryptonight-rs.svg?branch=master)](https://travis-ci.org/arigatodl/cryptonight-rs)
 
 Cryptonight-rs is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
 
