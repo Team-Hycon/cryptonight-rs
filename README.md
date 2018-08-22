@@ -1,0 +1,2 @@
+# cryptonight-rs
+
