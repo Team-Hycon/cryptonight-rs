@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["cryptonight","Cryptonight hash function to output a fixed length string from a arbitrary length input string. # Arguments - data - data to be hashed - size - data size - variant - 1: Monero v7, 0: Monero V0 # Example"]]});
