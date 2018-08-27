@@ -12,7 +12,7 @@
 //!```rust
 //! extern crate cryptonight;
 //! 
-//! use cryptonight::cn_hash;
+//! use cryptonight::cryptonight;
 //! ```
 //! 
 //! # Test & Benchmark
@@ -41,7 +41,7 @@ extern "C" {
 /// ```rust
 /// # extern crate rustc_serialize as serialize;
 /// # extern crate cryptonight;
-/// # use cryptonight::cn_hash;
+/// # use cryptonight::cryptonight;
 /// # use serialize::hex::FromHex;
 /// struct Test {
 ///     input: Vec<u8>,
@@ -55,13 +55,13 @@ extern "C" {
 /// ab49459b".from_hex().unwrap(),
 /// variant:1
 /// };
-/// let out = cn_hash(&test.input[..], test.input.len(), test.variant);
+/// let out = cryptonight(&test.input[..], test.input.len(), test.variant);
 /// assert_eq!(out, test.output);
 /// ```
 /// 
 /// # reference
 /// [https://cryptonote.org/cns/cns008.txt](https://cryptonote.org/cns/cns008.txt)
-pub fn cn_hash(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
+pub fn cryptonight(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
     let hash: Vec<i8> = vec![0i8; 32];
     let data_ptr: *const c_void = data.as_ptr() as *const c_void;
     let hash_ptr: *const c_char = hash.as_ptr() as *const c_char;
@@ -85,7 +85,7 @@ mod tests {
     /// totally 16 test cases
     fn test_hash(tests: &[Test]) {
         for t in tests {
-            let out = cn_hash(&t.input[..], t.input.len(), t.variant);
+            let out = cryptonight(&t.input[..], t.input.len(), t.variant);
             assert_eq!(out, t.output);
         }
     }

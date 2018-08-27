@@ -19,7 +19,7 @@ and the following to your crate root:
 
 ```rust
 extern crate cryptonight;
-use cryptonight::cn_hash;
+use cryptonight::cryptonight;
 ```
 
 ## Test & Benchmark
