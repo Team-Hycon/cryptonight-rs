@@ -2,9 +2,9 @@
 name = "cryptonight-rs"
 description = "Cryptonight-rs is a Rust wrapper around Cryptonight hash function from Monero."
 version = "0.2.0"
-authors = ["Hycon team"]
-homepage = "https://github.com/arigatodl/cryptonight-rs/"
-repository = "https://github.com/arigatodl/cryptonight-rs/"
+authors = ["Dulguun <dulguun@glosfer.com>, Tang Wei <maxtang@glosfer.com>"]
+homepage = "https://github.com/Team-Hycon/cryptonight-rs/"
+repository = "https://github.com/Team-Hycon/cryptonight-rs/"
 keywords = [ "Crypto", "Cryptonight" ]
 readme = "README.md"
 build = "build.rs"
