@@ -1,8 +1,8 @@
 [package]
 name = "cryptonight-rs"
 description = "Cryptonight-rs is a Rust wrapper around Cryptonight hash function from Monero."
-version = "0.2.0"
-authors = ["Dulguun <dulguun@glosfer.com>, Tang Wei <maxtang@glosfer.com>"]
+version = "0.2.1"
+authors = ["Dulguun <dulguun@glosfer.com>", "Tang Wei <maxtang@glosfer.com>"]
 homepage = "https://github.com/Team-Hycon/cryptonight-rs/"
 repository = "https://github.com/Team-Hycon/cryptonight-rs/"
 documentation = "https://team-hycon.github.io/cryptonight-rs/0_2/cryptonight/" 
