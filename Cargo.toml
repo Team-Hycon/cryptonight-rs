@@ -1,7 +1,7 @@
 [package]
 name = "cryptonight-rs"
 description = "Cryptonight-rs is a Rust wrapper around Cryptonight hash function from Monero."
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Hycon team"]
 homepage = "https://github.com/arigatodl/cryptonight-rs/"
 repository = "https://github.com/arigatodl/cryptonight-rs/"

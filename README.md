@@ -12,7 +12,7 @@ To use Cryptonight-rs, add the following to your Cargo.toml:
 
 ```toml
 [dependencies]
-cryptonight-rs = "^0.1"
+cryptonight-rs = "^0.2"
 ```
 
 and the following to your crate root:

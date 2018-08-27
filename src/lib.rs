@@ -1,20 +1,20 @@
 //! Cryptonight-rs is a Rust wrapper around Cryptonight hash function from [Monero source code](https://github.com/monero-project/monero).
-//! 
+//!
 //! # Examples
-//! 
+//!
 //! To use Cryptonight-rs, add the following to your Cargo.toml:
 //! ```toml
 //! [dependencies]
-//! cryptonight-rs = "^0.1"
+//! cryptonight-rs = "^0.2"
 //! ```
-//! 
-//! and the following to your crate root: 
+//!
+//! and the following to your crate root:
 //!```rust
 //! extern crate cryptonight;
-//! 
+//!
 //! use cryptonight::cryptonight;
 //! ```
-//! 
+//!
 //! # Test & Benchmark
 //! Clone the repository into local
 //! - cd repo
@@ -31,13 +31,13 @@ extern "C" {
     fn cn_slow_hash(data: *const c_void, length: usize, hash: *const c_char, variant: i32, pre_hashed: i32) -> c_void;
 }
 
-/// Cryptonight hash function to output a fixed length string from a arbitrary length input string. 
+/// Cryptonight hash function to output a fixed length string from a arbitrary length input string.
 /// # Arguments
 /// - data - data to be hashed
 /// - size - data size
 /// - variant - 1: Monero v7, 0: Monero V0
 /// # Example
-/// 
+///
 /// ```rust
 /// # extern crate rustc_serialize as serialize;
 /// # extern crate cryptonight;
@@ -50,7 +50,7 @@ extern "C" {
 /// }
 /// let test = Test{
 /// input:"38274c97c45a172cfc97679870422e3a1ab0784960c60514d81627141\
-/// 5c306ee3a3ed1a77e31f6a885c3cb".from_hex().unwrap(), 
+/// 5c306ee3a3ed1a77e31f6a885c3cb".from_hex().unwrap(),
 /// output:"ed082e49dbd5bbe34a3726a0d1dad981146062b39d36d62c71eb1ed8\
 /// ab49459b".from_hex().unwrap(),
 /// variant:1
@@ -58,7 +58,7 @@ extern "C" {
 /// let out = cryptonight(&test.input[..], test.input.len(), test.variant);
 /// assert_eq!(out, test.output);
 /// ```
-/// 
+///
 /// # reference
 /// [https://cryptonote.org/cns/cns008.txt](https://cryptonote.org/cns/cns008.txt)
 pub fn cryptonight(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
