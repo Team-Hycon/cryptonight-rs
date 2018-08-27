@@ -248,11 +248,11 @@
     <span class="kw">fn</span> <span class="ident">cn_slow_hash</span>(<span class="ident">data</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">length</span>: <span class="ident">usize</span>, <span class="ident">hash</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">variant</span>: <span class="ident">i32</span>, <span class="ident">pre_hashed</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">c_void</span>;
 }
 
-<span class="doccomment">/// Cryptonight hash function to output a fixed length string from a arbitrary length input string.</span>
+<span class="doccomment">/// Computes the hash of &lt;data&gt; (which consists of &lt;size&gt; bytes), returning the hash (32 bytes).</span>
 <span class="doccomment">/// # Arguments</span>
-<span class="doccomment">/// - data - data to be hashed</span>
-<span class="doccomment">/// - size - data size</span>
-<span class="doccomment">/// - variant - 1: Monero v7, 0: Monero V0</span>
+<span class="doccomment">/// * `data` - the data to hash</span>
+<span class="doccomment">/// * `size` - the size in bytes of data</span>
+<span class="doccomment">/// * `variant` - 1: Monero v7, 0: Monero V0</span>
 <span class="doccomment">/// # Example</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```rust</span>
@@ -276,7 +276,7 @@
 <span class="doccomment">/// assert_eq!(out, test.output);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// # reference</span>
+<span class="doccomment">/// # Reference</span>
 <span class="doccomment">/// [https://cryptonote.org/cns/cns008.txt](https://cryptonote.org/cns/cns008.txt)</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cryptonight</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">size</span>: <span class="ident">usize</span>, <span class="ident">variant</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">hash</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="number">0i8</span>; <span class="number">32</span>];
