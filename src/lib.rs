@@ -31,11 +31,11 @@ extern "C" {
     fn cn_slow_hash(data: *const c_void, length: usize, hash: *const c_char, variant: i32, pre_hashed: i32) -> c_void;
 }
 
-/// Cryptonight hash function to output a fixed length string from a arbitrary length input string.
+/// Computes the hash of <data> (which consists of <size> bytes), returning the hash (32 bytes).
 /// # Arguments
-/// - data - data to be hashed
-/// - size - data size
-/// - variant - 1: Monero v7, 0: Monero V0
+/// * `data` - the data to hash
+/// * `size` - the size in bytes of data
+/// * `variant` - 1: Monero v7, 0: Monero V0
 /// # Example
 ///
 /// ```rust
@@ -59,7 +59,7 @@ extern "C" {
 /// assert_eq!(out, test.output);
 /// ```
 ///
-/// # reference
+/// # Reference
 /// [https://cryptonote.org/cns/cns008.txt](https://cryptonote.org/cns/cns008.txt)
 pub fn cryptonight(data: &[u8], size: usize, variant: i32) -> Vec<u8> {
     let hash: Vec<i8> = vec![0i8; 32];
